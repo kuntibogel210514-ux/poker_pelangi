@@ -3,76 +3,183 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101020">
-  <title>POKER PELANGI</title>
+  <meta name="theme-color" content="#090914">
+  <meta name="description" content="Halaman informasi POKER PELANGI.">
+  <title>POKER PELANGI — Halaman Informasi</title>
   <style>
-    :root { color-scheme: dark; }
+    :root {
+      color-scheme: dark;
+      --bg: #090914;
+      --panel: rgba(20, 20, 39, .78);
+      --muted: #aaa9c2;
+      --white: #f8f7ff;
+      --line: rgba(255,255,255,.12);
+    }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0; min-height: 100vh; display: grid; place-items: center;
-      padding: 28px 16px; font-family: Arial, Helvetica, sans-serif;
-      color: #fff; background:
-        radial-gradient(circle at 15% 15%, #49216f 0, transparent 34%),
-        radial-gradient(circle at 85% 80%, #123d65 0, transparent 34%), #0b0b17;
+      margin: 0; min-height: 100vh; color: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(130, 54, 220, .28), transparent 34rem),
+        radial-gradient(ellipse at 88% 26%, rgba(0, 190, 220, .16), transparent 30rem),
+        radial-gradient(ellipse at 50% 100%, rgba(232, 65, 148, .14), transparent 35rem),
+        var(--bg);
     }
-    .wrap { width: min(100%, 520px); text-align: center; }
-    .panel {
-      padding: 34px 24px 26px; border: 1px solid rgba(255,255,255,.15);
-      border-radius: 22px; background: rgba(18,18,36,.88);
-      box-shadow: 0 22px 70px rgba(0,0,0,.45);
+    a { color: inherit; }
+    .shell { width: min(1080px, calc(100% - 36px)); margin: auto; }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 18px; padding: 25px 0;
     }
-    .logo {
-      display: inline-block; margin: 0 0 12px; font-size: clamp(34px, 9vw, 52px);
-      line-height: 1.05; font-weight: 900; letter-spacing: 1px;
-      background: linear-gradient(90deg,#ff4d6d,#ffb84d,#fff06a,#5de18b,#54c7ff,#b58aff);
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+    .brand-mark {
+      width: 39px; height: 39px; border-radius: 13px;
+      background: conic-gradient(from 25deg, #ff5c8a, #ffbd59, #f5ed70, #53dfa4, #58c8ff, #a77bff, #ff5c8a);
+      box-shadow: 0 0 28px rgba(164, 99, 255, .3);
+    }
+    .brand-name { font-size: 14px; font-weight: 900; letter-spacing: 1.5px; }
+    .nav { display: flex; gap: 24px; align-items: center; }
+    .nav a { color: var(--muted); font-size: 13px; text-decoration: none; }
+    .nav a:hover { color: white; }
+    .hero {
+      position: relative; overflow: hidden; margin: 34px 0 22px; padding: clamp(34px, 7vw, 76px);
+      text-align: center; border: 1px solid var(--line); border-radius: 30px;
+      background: linear-gradient(135deg, rgba(36, 28, 65, .88), rgba(15, 22, 42, .86));
+      box-shadow: 0 28px 90px rgba(0,0,0,.34);
+    }
+    .hero:before, .hero:after {
+      content: ""; position: absolute; width: 240px; height: 240px; border-radius: 50%;
+      filter: blur(65px); opacity: .25; pointer-events: none;
+    }
+    .hero:before { background: #a34bff; top: -140px; left: -80px; }
+    .hero:after { background: #00c9db; bottom: -160px; right: -70px; }
+    .eyebrow {
+      position: relative; display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 13px; border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px; color: #d9d4f2; background: rgba(255,255,255,.05);
+      font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #69e6b0; box-shadow: 0 0 12px #69e6b0; }
+    h1 {
+      position: relative; margin: 22px 0 13px; font-size: clamp(38px, 8vw, 76px);
+      line-height: 1.02; font-weight: 950; letter-spacing: -2.5px;
+      background: linear-gradient(95deg, #ff719d 5%, #ffc76a 27%, #f5f27e 43%, #71e8ba 61%, #6bd8ff 78%, #c49aff 95%);
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .tagline { margin: 0 0 28px; color: #d6d5e5; line-height: 1.6; }
-    .links { display: grid; gap: 12px; }
-    .link {
-      display: block; padding: 15px 18px; border-radius: 12px;
-      color: #fff; text-decoration: none; font-weight: 800;
-      letter-spacing: .6px; background: linear-gradient(100deg,#7138c8,#2766c9);
-      border: 1px solid rgba(255,255,255,.18);
-      transition: transform .15s ease, filter .15s ease;
+    .lead { position: relative; max-width: 570px; margin: 0 auto; color: #c1bfd4; font-size: 15px; line-height: 1.8; }
+    .actions { position: relative; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; justify-content: center; align-items: center; min-height: 46px;
+      padding: 0 20px; border: 1px solid var(--line); border-radius: 13px;
+      color: white; text-decoration: none; font-size: 13px; font-weight: 800;
+      background: rgba(255,255,255,.07); transition: transform .18s, filter .18s;
     }
-    .link:hover { transform: translateY(-2px); filter: brightness(1.12); }
-    .link.secondary { background: linear-gradient(100deg,#bd397b,#7138c8); }
-    .info {
-      margin: 22px 0 0; padding: 14px; border-radius: 12px;
-      color: #d8d7e8; background: rgba(255,255,255,.06);
-      font-size: 14px; line-height: 1.55;
+    .btn.primary {
+      border: 0; color: #111020;
+      background: linear-gradient(100deg, #ff8db0, #ffd17c 48%, #8ee8c1);
+      box-shadow: 0 8px 28px rgba(255, 133, 173, .18);
     }
-    footer { margin-top: 20px; color: #9291a8; font-size: 12px; letter-spacing: .5px; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+    .section-head { margin: 42px 0 16px; }
+    .section-head p { margin: 0 0 7px; color: #a89acb; font-size: 11px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+    .section-head h2 { margin: 0; font-size: 24px; letter-spacing: -.5px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .card {
+      min-height: 190px; padding: 23px; border: 1px solid var(--line); border-radius: 19px;
+      background: var(--panel); backdrop-filter: blur(12px);
+      transition: transform .18s, border-color .18s;
+    }
+    .card:hover { transform: translateY(-4px); border-color: rgba(190,157,255,.42); }
+    .icon {
+      display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 18px;
+      border-radius: 14px; font-size: 20px;
+      background: linear-gradient(135deg, rgba(173,113,255,.24), rgba(73,208,220,.14));
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .card h3 { margin: 0 0 9px; font-size: 16px; }
+    .card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .notice {
+      margin: 17px 0 45px; padding: 19px 21px; border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px; color: #bdbbd0; background: rgba(255,255,255,.045);
+      font-size: 12px; line-height: 1.7;
+    }
+    footer {
+      display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+      padding: 22px 0 30px; border-top: 1px solid var(--line);
+      color: #77768e; font-size: 11px; letter-spacing: .5px;
+    }
+    @media (max-width: 700px) {
+      header { padding: 19px 0; }
+      .nav { gap: 13px; }
+      .nav a { font-size: 11px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .hero { margin-top: 20px; border-radius: 23px; }
+      h1 { letter-spacing: -1.5px; }
+    }
+    @media (max-width: 390px) {
+      .nav a:last-child { display: none; }
+      .brand-name { font-size: 12px; }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="panel">
-      <h1 class="logo">POKER PELANGI</h1>
-      <p class="tagline">SELAMAT DATANG DI POKER PELANGI</p>
-
-      <nav class="links" aria-label="Navigasi utama">
-        <a class="link" href="#informasi">INFORMASI</a>
-        <a class="link secondary" href="#panduan">PANDUAN</a>
-        <a class="link" href="#promo">INFO PROMO</a>
-        <a class="link secondary" href="https://wa.me/6285371716381" target="_blank" rel="noopener">HUBUNGI ADMIN</a>
+  <div class="shell">
+    <header>
+      <a class="brand" href="#" aria-label="POKER PELANGI beranda">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">POKER PELANGI</span>
+      </a>
+      <nav class="nav" aria-label="Navigasi">
+        <a href="#informasi">Informasi</a>
+        <a href="#panduan">Panduan</a>
+        <a href="#pembaruan">Pembaruan</a>
       </nav>
+    </header>
 
-      <div class="info" id="informasi">
-        <strong>POKER PELANGI</strong><br>
-        Halaman informasi resmi. Untuk pertanyaan atau bantuan, silakan hubungi admin.
+    <main>
+      <section class="hero">
+        <span class="eyebrow"><span class="dot"></span> HALAMAN INFORMASI</span>
+        <h1>POKER PELANGI</h1>
+        <p class="lead">Selamat datang. Temukan informasi, panduan penggunaan, dan pengumuman terbaru dalam satu halaman yang mudah diakses.</p>
+        <div class="actions">
+          <a class="btn primary" href="#informasi">Jelajahi Informasi <span aria-hidden="true">&nbsp;↗</span></a>
+          <a class="btn" href="#panduan">Lihat Panduan</a>
+        </div>
+      </section>
+
+      <div class="section-head" id="informasi">
+        <p>Jelajahi halaman</p>
+        <h2>Informasi utama</h2>
       </div>
-      <div class="info" id="panduan">
-        <strong>PANDUAN</strong><br>
-        Informasi penggunaan layanan akan ditampilkan di bagian ini.
-      </div>
-      <div class="info" id="promo">
-        <strong>INFO PROMO</strong><br>
-        Periksa syarat dan ketentuan setiap informasi sebelum mengikutinya.
-      </div>
-    </section>
-    <footer>COPYRIGHT © POKER PELANGI</footer>
-  </main>
+      <section class="cards" aria-label="Informasi utama">
+        <article class="card">
+          <div class="icon" aria-hidden="true">✦</div>
+          <h3>Informasi</h3>
+          <p>Temukan keterangan umum dan informasi penting yang ditampilkan pada halaman ini.</p>
+        </article>
+        <article class="card" id="panduan">
+          <div class="icon" aria-hidden="true">▤</div>
+          <h3>Panduan</h3>
+          <p>Baca petunjuk dan ketentuan yang relevan sebelum menggunakan layanan apa pun.</p>
+        </article>
+        <article class="card" id="pembaruan">
+          <div class="icon" aria-hidden="true">◷</div>
+          <h3>Pembaruan</h3>
+          <p>Bagian ini dapat digunakan untuk menampilkan pengumuman dan perubahan informasi.</p>
+        </article>
+      </section>
+
+      <aside class="notice">
+        <strong>Catatan:</strong> Halaman ini merupakan halaman informasi statis. Pastikan membaca ketentuan yang berlaku dan mematuhi hukum setempat. Tidak ada fitur pendaftaran, pembayaran, atau transaksi pada halaman ini.
+      </aside>
+    </main>
+
+    <footer>
+      <span>© <span id="year">2026</span> POKER PELANGI</span>
+      <span>HALAMAN INFORMASI</span>
+    </footer>
+  </div>
 </body>
 </html>
