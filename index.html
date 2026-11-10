@@ -1,25 +1,78 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090d18">
-  <title>NEBULA — Portal</title>
-  <link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101020">
+  <title>POKER PELANGI</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      padding: 28px 16px; font-family: Arial, Helvetica, sans-serif;
+      color: #fff; background:
+        radial-gradient(circle at 15% 15%, #49216f 0, transparent 34%),
+        radial-gradient(circle at 85% 80%, #123d65 0, transparent 34%), #0b0b17;
+    }
+    .wrap { width: min(100%, 520px); text-align: center; }
+    .panel {
+      padding: 34px 24px 26px; border: 1px solid rgba(255,255,255,.15);
+      border-radius: 22px; background: rgba(18,18,36,.88);
+      box-shadow: 0 22px 70px rgba(0,0,0,.45);
+    }
+    .logo {
+      display: inline-block; margin: 0 0 12px; font-size: clamp(34px, 9vw, 52px);
+      line-height: 1.05; font-weight: 900; letter-spacing: 1px;
+      background: linear-gradient(90deg,#ff4d6d,#ffb84d,#fff06a,#5de18b,#54c7ff,#b58aff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .tagline { margin: 0 0 28px; color: #d6d5e5; line-height: 1.6; }
+    .links { display: grid; gap: 12px; }
+    .link {
+      display: block; padding: 15px 18px; border-radius: 12px;
+      color: #fff; text-decoration: none; font-weight: 800;
+      letter-spacing: .6px; background: linear-gradient(100deg,#7138c8,#2766c9);
+      border: 1px solid rgba(255,255,255,.18);
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .link:hover { transform: translateY(-2px); filter: brightness(1.12); }
+    .link.secondary { background: linear-gradient(100deg,#bd397b,#7138c8); }
+    .info {
+      margin: 22px 0 0; padding: 14px; border-radius: 12px;
+      color: #d8d7e8; background: rgba(255,255,255,.06);
+      font-size: 14px; line-height: 1.55;
+    }
+    footer { margin-top: 20px; color: #9291a8; font-size: 12px; letter-spacing: .5px; }
+  </style>
 </head>
 <body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-  <main class="shell">
-    <header class="topbar"><a class="brand" href="/">NEBULA<span>.</span></a><span class="status"><i></i> ONLINE</span></header>
-    <section class="hero">
-      <div class="eyebrow">PORTAL DIGITAL</div>
-      <h1>Jelajahi <span>menu pilihanmu.</span></h1>
-      <p class="intro">Satu tempat untuk mengakses semua tautan penting.</p>
+  <main class="wrap">
+    <section class="panel">
+      <h1 class="logo">POKER PELANGI</h1>
+      <p class="tagline">SELAMAT DATANG DI POKER PELANGI</p>
+
+      <nav class="links" aria-label="Navigasi utama">
+        <a class="link" href="#informasi">INFORMASI</a>
+        <a class="link secondary" href="#panduan">PANDUAN</a>
+        <a class="link" href="#promo">INFO PROMO</a>
+        <a class="link secondary" href="https://wa.me/6285371716381" target="_blank" rel="noopener">HUBUNGI ADMIN</a>
+      </nav>
+
+      <div class="info" id="informasi">
+        <strong>POKER PELANGI</strong><br>
+        Halaman informasi resmi. Untuk pertanyaan atau bantuan, silakan hubungi admin.
+      </div>
+      <div class="info" id="panduan">
+        <strong>PANDUAN</strong><br>
+        Informasi penggunaan layanan akan ditampilkan di bagian ini.
+      </div>
+      <div class="info" id="promo">
+        <strong>INFO PROMO</strong><br>
+        Periksa syarat dan ketentuan setiap informasi sebelum mengikutinya.
+      </div>
     </section>
-    <section id="menu" class="menu-grid" aria-label="Menu tautan">
-      <div class="loading">Memuat menu…</div>
-    </section>
-    <footer>© <span id="year"></span> NEBULA. Dibuat dengan sederhana.</footer>
+    <footer>COPYRIGHT © POKER PELANGI</footer>
   </main>
-  <script src="/app.js" defer></script>
 </body>
 </html>
